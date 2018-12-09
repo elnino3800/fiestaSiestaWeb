@@ -2,3 +2,12 @@ body{
     padding-top: 70px;
     overflow-y: scroll;
 }
+
+.table-panel{
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+.icon-column{
+    width: 30px;
+}
