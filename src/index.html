@@ -37,7 +37,7 @@
 <div class="container">
 
     <div class="table-panel">
-        <button type="button" class="btn btn-primary float-right">New cocktail</button>
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">New cocktail</button>
     </div>
 
     <div class="table-responsive">
@@ -45,37 +45,118 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Primary alcohol</th>
+                <th class="d-none d-sm-table-cell">Primary alcohol</th>
+                <th class="d-none d-sm-table-cell">IBA official cocktail</th>
                 <th>Difficulty</th>
                 <th>Rating</th>
-                <th class="icon-column"></th>
-                <th class="icon-column"></th>
+                <th class="icon-column d-none d-sm-table-cell"></th>
+                <th class="icon-column d-none d-sm-table-cell"></th>
             </tr>
             </thead>
             <tbody>
 
             <tr>
                 <td><a href="detail.html">Piña colada</a></td>
-                <td>Rum</td>
+                <td class="d-none d-sm-table-cell">Rum</td>
+                <td class="d-none d-sm-table-cell">Yes</td>
+                <td ><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></td>
                 <td><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></td>
-                <td><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></td>
-                <td><a href="#" class="fas fa-edit"></a></td>
-                <td><a href="#" class="fas fa-trash-alt"></a></td>
+                <td class="d-none d-sm-table-cell"><a href="#" class="fas fa-edit"></a></td>
+                <td class="d-none d-sm-table-cell"><a href="#" class="fas fa-trash-alt"></a></td>
             </tr>
             <tr>
                 <td><a href="detail.html">Piña colada</a></td>
-                <td>Rum</td>
+                <td class="d-none d-sm-table-cell">Rum</td>
+                <td class="d-none d-sm-table-cell">Yes</td>
+                <td ><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></td>
                 <td><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></td>
-                <td><i class="fas fa-star fa-sm"></i><i class="fas fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i><i class="far fa-star fa-sm"></i></td>
-                <td><a href="#" class="fas fa-edit"></a></td>
-                <td><a href="#" class="fas fa-trash-alt"></a></td>
+                <td class="d-none d-sm-table-cell"><a href="#" class="fas fa-edit"></a></td>
+                <td class="d-none d-sm-table-cell"><a href="#" class="fas fa-trash-alt"></a></td>
             </tr>
-
 
             </tbody>
         </table>
     </div>
 
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">New Cocktail</h3>
+            </div>
+            <form name="newCocktailForm">
+                <div class="modal-body" id="modal-body">
+
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#home" >Basic</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  data-toggle="tab" href="#profile">Ingredients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  data-toggle="tab" href="#contact">Preparation</a>
+                        </li>
+                    </ul>
+
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane show active" id="home" role="tabpanel">
+
+                            <div class="form-group">
+                                <label for="modalInputName">Name</label>
+                                <input type="text" class="form-control" id="modalInputName" ng-model="$ctrl.drink.name" required focus-me="true">
+                                <div class="invalid-feedback">Please provide a valid city.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="modalInputAlcohol">Primary alcohol</label>
+                                <input type="text" class="form-control" id="modalInputAlcohol" ng-model="$ctrl.drink.primaryAlcohol" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="modalInputDifficulty">Difficulty</label>
+                                <input type="number" class="form-control" id="modalInputDifficulty" ng-model="$ctrl.drink.difficulty" required
+                                       min="1" max="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="modalInputRating">Rating</label>
+                                <input type="number" class="form-control" id="modalInputRating" ng-model="$ctrl.drink.rating" required
+                                       min="1" max="5">
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="modalInputIba" ng-model="$ctrl.drink.iba">
+                                <label class="form-check-label" for="modalInputIba">IBA official cocktail</label>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="profile" role="tabpanel">
+                            <div class="form-group">
+                                <label for="modalInputIngredients"></label>
+                                <textarea class="form-control" id="modalInputIngredients" rows="5" ng-model="$ctrl.drink.ingredients"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="contact" role="tabpanel">
+                            <div class="form-group">
+                                <label for="modalInputIngredients"></label>
+                                <textarea class="form-control" id="modalInputPreparation" rows="5" ng-model="$ctrl.drink.preparation"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" data-dismiss="modal">Save and close</button>
+                    <button class="btn btn-secondary" type="submit" data-dismiss="modal">Save</button>
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
